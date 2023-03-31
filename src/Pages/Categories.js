@@ -4,4 +4,4 @@ const Categories = () => (
   <div>Check Status</div>
 );
 
-export default Categories
+export default Categories;
