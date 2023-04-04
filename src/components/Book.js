@@ -1,15 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeBook } from '../redux/books/booksSlice';
 
-function Book() {
+const Book = ({
+  id, title, author, category,
+}) => {
+  const dispatch = useDispatch();
+  const book = useSelector((state) => state.books.find((book) => book.item_id === id));
+
+  if (!book) {
+    return null;
+  }
+
   return (
     <li>
       <div className="Book">
-        <p>action</p>
-        <h3>the hunger games</h3>
-        <p>suzan colins</p>
+        <p>{category}</p>
+        <h3>{title}</h3>
+        <p>{author}</p>
         <div>
           <button type="button">comment</button>
-          <button type="button">remove</button>
+          <button type="button" onClick={() => dispatch(removeBook(id))}>
+            remove
+          </button>
           <button type="button">edit</button>
         </div>
         <div className="Book-Status">
@@ -31,6 +45,13 @@ function Book() {
       </div>
     </li>
   );
-}
+};
+
+Book.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+};
 
 export default Book;
