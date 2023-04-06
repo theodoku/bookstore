@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeBook } from '../redux/books/booksSlice';
+import { removeBookItem } from '../redux/books/booksSlice';
 
 const Book = ({
   id, title, author, category,
 }) => {
   const dispatch = useDispatch();
-  const book = useSelector((state) => state.books.find((book) => book.item_id === id));
+  const book = useSelector((state) => state.books.books.find((book) => book.item_id === id));
 
   if (!book) {
     return null;
@@ -21,7 +21,7 @@ const Book = ({
         <p>{author}</p>
         <div>
           <button type="button">comment</button>
-          <button type="button" onClick={() => dispatch(removeBook(id))}>
+          <button type="button" onClick={() => dispatch(removeBookItem(id))}>
             remove
           </button>
           <button type="button">edit</button>

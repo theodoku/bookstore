@@ -1,36 +1,67 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import URL from '../../Utility/constants';
 
-const initialState = [
-  {
-    id: 'item1',
-    title: 'The Great Gatsby',
-    author: 'John Smith',
-    category: 'Fiction',
+export const fetchBooks = createAsyncThunk(
+  'bookstore/books/fetch',
+  async () => {
+    const resp = await axios(URL);
+    const data = await resp.data;
+    return Object.keys(data).map((id) => ({
+      item_id: id,
+      title: data[id][0].title,
+      author: data[id][0].author,
+      category: data[id][0].category,
+    }));
   },
-  {
-    id: 'item2',
-    title: 'Anna Karenina',
-    author: 'Leo Tolstoy',
-    category: 'Fiction',
+);
+
+export const addBookItem = createAsyncThunk(
+  'bookstore/books/add',
+  async (payload) => {
+    await fetch(URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    return payload;
   },
-  {
-    id: 'item3',
-    title: 'The Selfish Gene',
-    author: 'Richard Dawkins',
-    category: 'Nonfiction',
+);
+
+const removeBookItem = createAsyncThunk(
+  'bookstore/books/remove',
+  async (payload) => {
+    await fetch(`${URL}/${payload}`, {
+      method: 'DELETE',
+    });
+    return payload;
   },
-];
+);
+
+const initialState = {
+  books: [],
+};
 
 const booksSlice = createSlice({
-  name: 'books',
+  name: 'bookstore/books',
   initialState,
-  reducers: {
-    addBook: (state, action) => {
-      state.push(action.payload);
-    },
-    removeBook: (state, action) => state.filter((book) => book.id !== action.payload),
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBooks.fulfilled, (state, action) => ({
+        ...state,
+        books: action.payload,
+      }))
+      .addCase(addBookItem.fulfilled, (state, book) => ({
+        ...state,
+        books: state.books.push(book),
+      }))
+      .addCase(removeBookItem.fulfilled, (state, action) => ({
+        ...state,
+        books: state.books.filter((book) => book.item_id !== action.payload),
+      }));
   },
 });
 
-export const { addBook, removeBook } = booksSlice.actions;
-export default booksSlice.reducer;
+export { removeBookItem };
+export { booksSlice };
