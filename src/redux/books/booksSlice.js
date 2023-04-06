@@ -28,7 +28,7 @@ export const addBookItem = createAsyncThunk(
   },
 );
 
-const removeBookItem = createAsyncThunk(
+export const removeBookItem = createAsyncThunk(
   'bookstore/books/remove',
   async (payload) => {
     await fetch(`${URL}/${payload}`, {
@@ -37,31 +37,29 @@ const removeBookItem = createAsyncThunk(
     return payload;
   },
 );
-
 const initialState = {
   books: [],
 };
-
 const booksSlice = createSlice({
   name: 'bookstore/books',
   initialState,
-
+  reducers: {
+    addBook: (state, action) => {
+      state.books.push(action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchBooks.fulfilled, (state, action) => ({
         ...state,
         books: action.payload,
       }))
-      .addCase(addBookItem.fulfilled, (state, book) => ({
-        ...state,
-        books: state.books.push(book),
-      }))
+      .addCase(addBookItem.fulfilled, (state, book) => (state.books.push(book)))
       .addCase(removeBookItem.fulfilled, (state, action) => ({
         ...state,
         books: state.books.filter((book) => book.item_id !== action.payload),
       }));
   },
 });
-
-export { removeBookItem };
+export const { addBook } = booksSlice.actions;
 export { booksSlice };

@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { addBookItem, fetchBooks } from '../redux/books/booksSlice';
+import { addBookItem, addBook } from '../redux/books/booksSlice';
 
 const Form = () => {
   const dispatch = useDispatch();
-
   const [inputState, setInputState] = useState({
     title: '',
     author: '',
   });
-
   const handleAddBook = (e) => {
     e.preventDefault();
     if (inputState.title && inputState.author !== '') {
@@ -21,14 +19,18 @@ const Form = () => {
           author: inputState.author,
           category: 'Fiction',
         }),
-      ).then(dispatch(fetchBooks()));
+      ).then(dispatch(addBook({
+        item_id: uuidv4(),
+        title: inputState.title,
+        author: inputState.author,
+        category: 'Fiction',
+      })));
     }
     setInputState({
       title: '',
       author: '',
     });
   };
-
   const handleOnChange = (e) => {
     setInputState((prevState) => ({
       ...prevState,
@@ -68,5 +70,4 @@ const Form = () => {
     </>
   );
 };
-
 export default Form;
