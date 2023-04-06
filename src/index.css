@@ -1,3 +1,285 @@
-li {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@300;500;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
   list-style: none;
+}
+
+body {
+  background-color: #f5f6fa;
+  padding: 8% 2% 7% 6%;
+}
+
+.App-container {
+  margin: 0 2% 4% 0;
+  padding: 0 0 16%;
+  border-radius: 4px;
+  box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.05);
+  background-color: #fafafa;
+}
+
+.header {
+  margin: 0 0 2%;
+  padding: 1% 6% 1% 6%;
+  background-color: #fff;
+  border: solid 1px #e8e8e8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  padding-right: 2.938rem;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 1.875rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #0290ff;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+}
+
+.nav-linkh1 {
+  text-decoration: none;
+}
+
+.nav-links {
+  text-decoration: none;
+  margin-right: 1rem;
+  margin-left: 2rem;
+  opacity: 0.5;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 0.813rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.9px;
+  color: #121212;
+}
+
+.booklist > li {
+  margin: 2% 6% 0;
+  padding: 2% 9.188% 1.625% 1.688%;
+  border-radius: 4px;
+  border: solid 1px #e8e8e8;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Title {
+  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
+  font-size: 1.375rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #121212;
+}
+
+.book-btn > button,
+.Author {
+  border: none;
+  background-color: #fff;
+  margin-right: 0.938rem;
+  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4386bf;
+  cursor: pointer;
+}
+
+.category {
+  border: none;
+  background-color: #fff;
+  margin-right: 0.938rem;
+  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  cursor: pointer;
+}
+
+.book-btn > button {
+  margin-top: 1rem;
+}
+
+.book-btn > button:not(:last-child) {
+  padding-right: 15px;
+  border-right: solid 0.125rem #e8e8e8;
+}
+
+.profile {
+  width: 2rem;
+  height: 2rem;
+  color: #0290ff;
+}
+
+.Book-Status {
+  display: flex;
+  align-items: center;
+}
+
+.oval-progress {
+  display: flex;
+  align-items: center
+}
+
+.Oval {
+  width: 4.25rem;
+  height: 4.25rem;
+  color: #307bbe;
+}
+
+.text-percentage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.percentage-completed {
+  margin: 0.063rem 5.75rem 0 0.688rem;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #121212;
+}
+
+.text-completed {
+  margin: 0.438rem 4.938rem 0.75rem 0.75rem;
+  opacity: 0.5;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #121212;
+}
+
+.chapter-progress {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-chapter,
+.chapter {
+  margin: 0.063rem 3.625rem 0 3.688rem;
+  opacity: 0.5;
+  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
+  font-size: 0.813rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #121212;
+}
+
+.chapter {
+  margin: 0.438rem 6.813rem 0.25rem 3.688rem;
+  font-size: 1rem;
+  color: #121212;
+  opacity: 1;
+}
+
+.update-progress {
+  margin: 0.75rem 1.75rem 0.563rem 3.688rem;
+  padding: 0.438rem 1.188rem 0.5rem 1.375rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #0290ff;
+  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
+  font-size: 0.813rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #fff;
+}
+
+.form-container {
+  margin: 2.313rem 6.25rem 0;
+  border-top: 1px solid #e8e8e8;
+}
+
+.form-title {
+  margin: 1.813rem 32.75rem 1.188rem 0;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.18px;
+  color: #888;
+}
+
+.input-title,
+.input-author {
+  margin: 1.188rem 5% 0 0;
+  padding: 0.813rem 35% 0.813rem 1.063rem;
+  border-radius: 4px;
+  border: solid 1px #e8e8e8;
+  background-color: #fff;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.15px;
+}
+
+.input-author {
+  padding: 0.813rem 0.938rem 0.813rem 1rem;
+}
+
+.input-title {
+  padding: 0.813rem 34% 0.813rem 1rem;
+} 
+
+.btn {
+  width: 12%;
+  height: 2.813rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #0290ff;
+  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
+  font-size: 0.813rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #fff;
 }

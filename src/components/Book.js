@@ -1,46 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import { CircularProgressbar } from 'react-circular-progressbar';
 import { removeBookItem } from '../redux/books/booksSlice';
+import 'react-circular-progressbar/dist/styles.css';
 
 const Book = ({
   id, title, author, category,
 }) => {
   const dispatch = useDispatch();
+  const [percentage, setPercentage] = useState(64);
   const book = useSelector((state) => state.books.books.find((book) => book.item_id === id));
 
   if (!book) {
     return null;
   }
 
+  const handleProgress = () => {
+    let newPercentage = percentage;
+    if (percentage < 100) {
+      newPercentage += 2;
+    }
+    setPercentage(newPercentage);
+  };
+
   return (
     <li>
       <div className="Book">
-        <p>{category}</p>
-        <h3>{title}</h3>
-        <p>{author}</p>
-        <div>
-          <button type="button">comment</button>
+        <span className="category">{category}</span>
+        <h3 className="Title">{title}</h3>
+        <span className="Author">{author}</span>
+        <div className="book-btn">
+          <button type="button">Comment</button>
           <button type="button" onClick={() => dispatch(removeBookItem(id))}>
-            remove
+            Remove
           </button>
-          <button type="button">edit</button>
+          <button type="button">Edit</button>
         </div>
-        <div className="Book-Status">
-          <div className="status">
-            <div className="status-bar">
-              <div className="status-bar-inner" />
-            </div>
-            <div className="percentage">
-              <h3>64%</h3>
-              <p>completed</p>
-            </div>
+      </div>
+      <div className="Book-Status">
+        <div className="oval-progress">
+          <CircularProgressbar className="Oval" value={percentage} />
+          <div className="text-percentage">
+            <span className="percentage-completed">
+              {percentage}
+              %
+            </span>
+            <span className="text-completed">Completed</span>
           </div>
-          <div className="chapter">
-            <h3>current chapter</h3>
-            <h3>chapter 17</h3>
-            <button type="button">update progress</button>
-          </div>
+        </div>
+        <div className="chapter-progress">
+          <span className="current-chapter">Current Chapter</span>
+          <span className="chapter">Chapter 17</span>
+          <button
+            className="update-progress"
+            type="button"
+            onClick={handleProgress}
+          >
+            UPDATE PROGRESS
+          </button>
         </div>
       </div>
     </li>

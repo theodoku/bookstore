@@ -39,11 +39,12 @@ const Form = () => {
   };
   return (
     <>
-      <form onSubmit={handleAddBook}>
-        <h3>ADD NEW BOOK</h3>
+      <form className="form-container" onSubmit={handleAddBook}>
+        <h3 className="form-title">ADD NEW BOOK</h3>
         <div className="inputs-wrap">
           <label htmlFor="title">
             <input
+              className="input-title"
               type="text"
               name="title"
               value={inputState.title}
@@ -54,6 +55,7 @@ const Form = () => {
           </label>
           <label htmlFor="author">
             <input
+              className="input-author"
               type="text"
               name="author"
               value={inputState.author}
