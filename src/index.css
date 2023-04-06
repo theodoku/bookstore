@@ -143,7 +143,7 @@ h1 {
 
 .oval-progress {
   display: flex;
-  align-items: center
+  align-items: center;
 }
 
 .Oval {
@@ -265,7 +265,7 @@ h1 {
 
 .input-title {
   padding: 0.813rem 34% 0.813rem 1rem;
-} 
+}
 
 .btn {
   width: 12%;
