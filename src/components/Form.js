@@ -8,6 +8,7 @@ const Form = () => {
   const [inputState, setInputState] = useState({
     title: '',
     author: '',
+    category: 'Action',
   });
   const handleAddBook = (e) => {
     e.preventDefault();
@@ -17,18 +18,23 @@ const Form = () => {
           item_id: uuidv4(),
           title: inputState.title,
           author: inputState.author,
-          category: 'Fiction',
+          category: inputState.category,
         }),
-      ).then(dispatch(addBook({
-        item_id: uuidv4(),
-        title: inputState.title,
-        author: inputState.author,
-        category: 'Fiction',
-      })));
+      ).then(
+        dispatch(
+          addBook({
+            item_id: uuidv4(),
+            title: inputState.title,
+            author: inputState.author,
+            category: inputState.category,
+          }),
+        ),
+      );
     }
     setInputState({
       title: '',
       author: '',
+      category: 'Action',
     });
   };
   const handleOnChange = (e) => {
@@ -39,11 +45,12 @@ const Form = () => {
   };
   return (
     <>
-      <form onSubmit={handleAddBook}>
-        <h3>ADD NEW BOOK</h3>
+      <form className="form-container" onSubmit={handleAddBook}>
+        <h3 className="form-title">ADD NEW BOOK</h3>
         <div className="inputs-wrap">
           <label htmlFor="title">
             <input
+              className="input-title"
               type="text"
               name="title"
               value={inputState.title}
@@ -54,6 +61,7 @@ const Form = () => {
           </label>
           <label htmlFor="author">
             <input
+              className="input-author"
               type="text"
               name="author"
               value={inputState.author}
@@ -62,8 +70,20 @@ const Form = () => {
               onChange={handleOnChange}
             />
           </label>
+          <label htmlFor="category">
+            <select
+              className="input-category"
+              name="category"
+              value={inputState.category}
+              onChange={handleOnChange}
+            >
+              <option value="Action">Action</option>
+              <option value="Science fiction">Science Fiction</option>
+              <option value="Economy">Economy</option>
+            </select>
+          </label>
           <button type="submit" title="Add Book" className="btn">
-            Add book
+            ADD BOOK
           </button>
         </div>
       </form>

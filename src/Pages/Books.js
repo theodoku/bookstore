@@ -14,7 +14,7 @@ function Books() {
     dispatch(removeBookItem(id));
   };
   return (
-    <ul>
+    <ul className="booklist">
       {booksFromStore.books.map((book) => (
         <Book
           key={book.item_id}
