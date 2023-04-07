@@ -108,17 +108,9 @@ h1 {
 }
 
 .category {
-  border: none;
-  background-color: #fff;
-  margin-right: 0.938rem;
-  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 0.875rem;
-  font-weight: 300;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  cursor: pointer;
+  opacity: 0.5;
 }
 
 .book-btn > button {
@@ -215,7 +207,7 @@ h1 {
   border: none;
   border-radius: 3px;
   background-color: #0290ff;
-  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
+  font-family: "Roboto Slab", serif;
   font-size: 0.813rem;
   font-weight: 300;
   font-stretch: normal;
@@ -244,7 +236,8 @@ h1 {
 }
 
 .input-title,
-.input-author {
+.input-author,
+.input-category {
   margin: 1.188rem 5% 0 0;
   padding: 0.813rem 35% 0.813rem 1.063rem;
   border-radius: 4px;
@@ -259,12 +252,13 @@ h1 {
   letter-spacing: -0.15px;
 }
 
-.input-author {
-  padding: 0.813rem 0.938rem 0.813rem 1rem;
+.input-author,
+.input-category {
+  padding: 0.813rem 0.9rem 0.813rem 0.2rem;
 }
 
 .input-title {
-  padding: 0.813rem 34% 0.813rem 1rem;
+  padding: 0.813rem 14% 0.813rem 1rem;
 }
 
 .btn {
@@ -273,7 +267,7 @@ h1 {
   border: none;
   border-radius: 3px;
   background-color: #0290ff;
-  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
+  font-family: "Roboto Slab", serif;
   font-size: 0.813rem;
   font-weight: bold;
   font-stretch: normal;
